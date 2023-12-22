@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Call Deploy Chart & Image Action 
-        uses: AhmedDevOpsGenius/composite-example@main
+        uses: AhmedDevOpsGenius/composite-example/Actions/Deploy-Chart-Image@main
         with:
-          path: ./Actions/Deploy-Chart-Image  # Path to the action within the repository
+          path: ./Actions/Deploy-Chart-Image 
           environment: 'production'
           release_name: 'my-release'
           chart_path: './path/to/helm/chart'
