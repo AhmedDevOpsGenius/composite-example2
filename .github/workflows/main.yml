@@ -1,0 +1,33 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_chart_and_image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Call Deploy Chart & Image Action 
+        uses: AhmedDevOpsGenius/composite-example@main
+        with:
+          path: ./Actions/Deploy-Chart-Image  # Path to the action within the repository
+          environment: 'production'
+          release_name: 'my-release'
+          chart_path: './path/to/helm/chart'
+          helm_chart_version: '1.2.3'
+          helm_app_version: '1.2.3'
+          image_name: 'myimage'
+          image_tag: 'latest'
+          node_selector_os: 'linux'
+          target_namespace: 'my-namespace'
+          ingress_url: 'my-ingress-url'
+          autoscaling_min_replicas: '1'
+          autoscaling_max_replicas: '3'
+          enable_ingress_auth_if_supported: true
+          force: false
